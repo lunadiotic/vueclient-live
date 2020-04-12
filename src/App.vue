@@ -13,6 +13,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Posts</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/add">Create</a>
+          </li>
         </ul>
       </div>
     </nav>
