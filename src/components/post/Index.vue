@@ -22,7 +22,7 @@
                         <h5 class="card-title">{{ post.title }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ post.published ? 'Publish' : 'Unpblished' }}</h6>
                         <p class="card-text">{{ post.description }}</p>
-                        <a href="#" class="card-link">Edit</a>
+                        <a :href="'/post/' + post.id" class="card-link">Edit</a>
                     </div>
                 </div>
 
