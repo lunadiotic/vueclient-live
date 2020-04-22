@@ -13,8 +13,17 @@
                 <label for="">Status: </label> {{ post.published }}
             </div>
             <button @click="postUpdate()" class="btn btn-success m-1">Update</button>
-            <button class="btn btn-primary m-1">Published</button>
-            <button class="btn btn-danger">Delete</button>
+            <button 
+                class="btn btn-primary m-1"
+                v-if="post.published"
+                @click="postPublished(false)"
+            >Unpublished</button>
+            <button 
+                class="btn btn-primary m-1"
+                v-else
+                @click="postPublished(true)"
+            >Published</button>
+            <button @click="postDelete()" class="btn btn-danger">Delete</button>
         </form>
         <p>{{ message }}</p>
     </div>
@@ -59,6 +68,21 @@ export default {
                     console.log(result.data);
                 }).catch((err) => {
                     console.log(err)
+                });
+        },
+
+        postPublished(status) {
+            this.post.published = status;
+            this.postUpdate();
+        },
+
+        postDelete() {
+            PostService.delete(this.post.id)
+                .then((result) => {
+                    console.log(result.data);
+                    this.$router.push({ name: "posts" });
+                }).catch((err) => {
+                    console.log(err);
                 });
         }
     }

@@ -17,6 +17,18 @@ class PostService
     update(id, data) {
         return http.put(`/posts/${id}`, data);
     }
+
+    delete(id) {
+        return http.delete(`/posts/${id}`);
+    }
+
+    deleteAll() {
+        return http.delete(`/posts`);
+    }
+
+    findByTitle(title) {
+        return http.get(`/posts?title=${title}`);
+    }
 }
 
 export default new PostService;
